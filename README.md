@@ -32,4 +32,4 @@ CODE
 * **Furkan Tokac** - *Initial work* - [Computer Engineering Student](http://furkantokac.com/)
 * **Ibrahim Aydin** - *Initial work* - [Computer Engineering Student](https://github.com/Oldkid13)
 
-See also the list of [contributors](https://github.com/furkantokac/StuBC-server/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/furkantokac/Frec/contributors) who participated in this project.
