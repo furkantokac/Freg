@@ -1,0 +1,19 @@
+// Frec V0.0
+{
+  "Frec": {
+    "Member": {
+      "_id": "AutomaticallyGiven",
+      "first_name": "firstnametest",
+      "last_name": "lastnametest",
+      "email": "emailtest@gmail.com",
+      "department": "departmenttest",
+      "mobile_ncc": "nccmobilephonenumber",
+      "mobile_tr": "turkeymobilephonenumber"
+    },
+    "Department": {
+      "_id": "AutomaticallyGiven",
+      "id": "1",
+      "name": "Computer Engineering"
+    }
+  }
+}

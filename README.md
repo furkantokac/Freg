@@ -1,2 +1,34 @@
-# Freg
-Small community registration system with Python3, MongoDB, PyQt5
+# Frec Alpha V0.0
+
+Frec is a program under Faunus project that handle the small registration task. It uses MongoDB as database and PyQt5 as GUI.
+
+
+### Requirements
+* Python3+ (Python2 is not tested.)
+* MongoDB
+* pymongo
+* Linux or macOS (Windows untested yet)
+<!--```
+CODE
+```-->
+
+## Deployment
+
+1) Install [MongoDB Server](https://www.mongodb.com/download-center)
+2) Install [Python3+](https://www.python.org/downloads/)
+3) Install [pip3](https://stackoverflow.com/questions/6587507/how-to-install-pip-with-python-3)
+4) pip3 install -r [requirements.txt]()
+5) python3 [main.py](https://github.com/furkantokac/Freg/blob/master/src/main.py)
+
+## Development Tools
+
+* [PyCharm 2017.1.5](https://www.jetbrains.com/pycharm/) - Python IDE
+* [MongoDB Compass](https://www.mongodb.com/products/compass) - Management of MongoDB data
+* [Atlassian Jira](https://www.atlassian.com/software/jira) - Project management
+
+## Authors
+
+* **Furkan Tokac** - *Initial work* - [Computer Engineering Student](http://furkantokac.com/)
+* **Ibrahim Aydin** - *Initial work* - [Computer Engineering Student](https://github.com/Oldkid13)
+
+See also the list of [contributors](https://github.com/furkantokac/StuBC-server/contributors) who participated in this project.
