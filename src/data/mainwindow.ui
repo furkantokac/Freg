@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>Frec</class>
+ <widget class="QMainWindow" name="Frec">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,16 +11,16 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Frec</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="1" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
-      <widget class="QWidget" name="tab">
+      <widget class="QWidget" name="tab_newbie">
        <attribute name="title">
         <string>Newbie</string>
        </attribute>
@@ -42,13 +42,13 @@
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="QLineEdit" name="lineEdit"/>
+            <widget class="QLineEdit" name="lne_name"/>
            </item>
            <item row="1" column="1">
-            <widget class="QLineEdit" name="lineEdit_2"/>
+            <widget class="QLineEdit" name="lne_surname"/>
            </item>
            <item row="3" column="1">
-            <widget class="QLineEdit" name="lineEdit_4"/>
+            <widget class="QLineEdit" name="lne_email"/>
            </item>
            <item row="1" column="0">
             <widget class="QLabel" name="label_2">
@@ -101,13 +101,13 @@
             </widget>
            </item>
            <item row="4" column="1">
-            <widget class="QLineEdit" name="lineEdit_5"/>
+            <widget class="QLineEdit" name="lne_mobile1"/>
            </item>
            <item row="5" column="1">
-            <widget class="QLineEdit" name="lineEdit_6"/>
+            <widget class="QLineEdit" name="lne_mobile2"/>
            </item>
            <item row="2" column="1">
-            <widget class="QComboBox" name="comboBox">
+            <widget class="QComboBox" name="comboBox_department">
              <item>
               <property name="text">
                <string>Computer Engineering</string>
@@ -184,14 +184,14 @@
          </widget>
         </item>
         <item row="1" column="0">
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="btn_register">
           <property name="text">
            <string>Register</string>
           </property>
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="btn_clear">
           <property name="text">
            <string>Clear</string>
           </property>
@@ -212,34 +212,34 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_2">
+      <widget class="QWidget" name="tab_members">
        <attribute name="title">
         <string>Members</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="1" column="2">
-         <widget class="QPushButton" name="pushButton_4">
+         <widget class="QPushButton" name="btn_export">
           <property name="text">
            <string>Export</string>
           </property>
          </widget>
         </item>
         <item row="1" column="0">
-         <widget class="QPushButton" name="pushButton_3">
+         <widget class="QPushButton" name="btn_remove">
           <property name="text">
            <string>Remove</string>
           </property>
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QPushButton" name="pushButton_5">
+         <widget class="QPushButton" name="btn_import">
           <property name="text">
            <string>Import</string>
           </property>
          </widget>
         </item>
         <item row="0" column="0" colspan="3">
-         <widget class="QTableView" name="tableView"/>
+         <widget class="QTableView" name="tableView_members"/>
         </item>
        </layout>
       </widget>
