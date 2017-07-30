@@ -7,6 +7,7 @@ Frec is a program under Faunus project that handle the small registration task. 
 * Python3+ (Python2 is not tested.)
 * MongoDB
 * pymongo
+* PyQt5
 * Linux or macOS (Windows untested yet)
 <!--```
 CODE
