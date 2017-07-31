@@ -14,7 +14,6 @@ class MongoDatabase:
             def __init__(self):
                 #  if you have new collection, put it here as below
                 self.member = "Member"
-                self.department = "Department"
 
         self.colls = Collections()
         self.dbName = ""
@@ -77,14 +76,12 @@ class MongoDatabase:
         return datetime.strptime(str_dt, datetime_format)
 
     # -------------- BEG MEMBER
-    def add_new_member(self, firstname="", lastname="", email="", department="", mobilencc="", mobiletr=""):
+    def add_new_member(self, firstname="", lastname="", email="", department="", mobilencc="", mobileother=""):
         member = {
-            "first_name": firstname,
-            "last_name": lastname,
+            "name": {"first": firstname, "last": lastname},
             "email": email,
             "department": department,
-            "mobile_ncc": mobilencc,
-            "mobile_tr": mobiletr,
+            "mobileNo": {"ncc": mobilencc, "other": mobileother},
             "registration_date": self.get_datetime()
         }
 

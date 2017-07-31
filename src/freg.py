@@ -20,7 +20,7 @@ class Frec(QMainWindow):
 
     def init_frec(self):
         self.ui.btn_register.clicked.connect(self.save_new_member)
-        self.ui.btn_remove.clicked.connect(self.delete_member)
+        self.ui.btn_delete.clicked.connect(self.delete_member)
 
         self.ui.btn_clear.clicked.connect(self.clear_form)
         self.ui.btn_export.clicked.connect(self.export_cvs)
@@ -58,10 +58,10 @@ class Frec(QMainWindow):
     # Clear inside the line edits in registration form
     def clear_form(self):
         self.ui.lne_email.setText("")
-        self.ui.lne_firstname.setText("")
-        self.ui.lne_lastname.setText("")
-        self.ui.lne_mobilecyp.setText("")
-        self.ui.lne_mobiletr.setText("")
+        self.ui.lne_firstName.setText("")
+        self.ui.lne_lastName.setText("")
+        self.ui.lne_mobileCyp.setText("")
+        self.ui.lne_mobileOther.setText("")
         self.ui.comboBox_department.setCurrentIndex(0)
 
     # Export members in the database as csv
