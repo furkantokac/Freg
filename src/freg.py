@@ -35,7 +35,7 @@ class Frec(QMainWindow):
 
     def connect_db(self):
         dbName = self.ui.lne_dbName.text()
-        if self.db._connect( dbName ):
+        if self.db.connect( dbName ):
             self.show_message("Database connection with '"+dbName+"' is successful.")
             self.ui.lbl_dbConnection.setText("Database : Connected '"+dbName+"'")
             self.ui.lbl_dbConnection.setStyleSheet('color: green')

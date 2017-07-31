@@ -18,15 +18,6 @@ class MongoDatabase:
         self.colls = Collections()
         self.dbName = ""
 
-    def _connect(self, databaseName):
-        self.dbName = databaseName
-        try:
-            self.client = MongoClient()
-            self.db = self._get_database(self.dbName)
-            return True
-        except:
-            return False
-
     def _get_database(self, dbname):
         return self.client[dbname]
 
@@ -34,6 +25,17 @@ class MongoDatabase:
         return self.db[collname]
 
     # -------------- BEG GENERALS
+    def connect(self, databaseName):
+        self.dbName = databaseName
+        try:
+            self.client = MongoClient(serverSelectionTimeoutMS=500)
+            self.client.server_info()
+        except:
+            return False
+
+        self.db = self._get_database(self.dbName)
+        return True
+
     def insert_element(self, collection, field):
         coll = self._get_collection(collection)
         coll.insert(field)
@@ -89,3 +91,13 @@ class MongoDatabase:
 
     def delete_member_by_email(self, email):
         pass  # TODO
+
+
+def test():
+    db = MongoDatabase()
+    db.connect("FregTEST")
+    db.add_new_member()
+
+
+if __name__ == "__main__":
+    test()
