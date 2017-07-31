@@ -10,7 +10,7 @@ Freg is a program under Faunus project that handle the small registration task. 
 * PyQt5
 * Linux or macOS (Windows untested yet)
 <!--```
-CODE
+CODEhttps://faunusteam.atlassian.net/secure/admin/EditPermissions!default.jspa?schemeId=10000
 ```-->
 
 ## Deployment
@@ -23,7 +23,8 @@ CODE
 
 ## Development Tools
 
-* [PyCharm 2017.1.5](https://www.jetbrains.com/pycharm/) - Python IDE
+* [Qt Creator 4.3.1](https://www.qt.io/download-open-source) - For GUI Design
+* [PyCharm 2017.2](https://www.jetbrains.com/pycharm/) - Python IDE
 * [MongoDB Compass](https://www.mongodb.com/products/compass) - Management of MongoDB data
 * [Atlassian Jira](https://www.atlassian.com/software/jira) - Project management
 
