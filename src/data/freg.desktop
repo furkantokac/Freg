@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Freg
+Exec=python3 [-HOMEDIR-]/.faunus/frec/frec.py
+Icon=[-HOMEDIR-]/.faunus/frec/data/icon/appicon.png
+Comment=Small member registration system
+Terminal=false

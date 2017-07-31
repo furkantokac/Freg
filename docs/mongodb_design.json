@@ -8,7 +8,8 @@
       "email": "emailtest@gmail.com",
       "department": "departmenttest",
       "mobile_ncc": "nccmobilephonenumber",
-      "mobile_tr": "turkeymobilephonenumber"
+      "mobile_tr": "turkeymobilephonenumber",
+      "registration_date": "datetime"
     },
     "Department": {
       "_id": "AutomaticallyGiven",

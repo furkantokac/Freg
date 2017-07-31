@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>515</width>
-    <height>385</height>
+    <height>409</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -101,10 +101,10 @@
             </widget>
            </item>
            <item row="4" column="1">
-            <widget class="QLineEdit" name="lne_mobile1"/>
+            <widget class="QLineEdit" name="lne_mobilecyp"/>
            </item>
            <item row="5" column="1">
-            <widget class="QLineEdit" name="lne_mobile2"/>
+            <widget class="QLineEdit" name="lne_mobiletr"/>
            </item>
            <item row="2" column="1">
             <widget class="QComboBox" name="comboBox_department">
@@ -197,7 +197,7 @@
           </property>
          </widget>
         </item>
-        <item row="2" column="0" colspan="2">
+        <item row="3" column="0" colspan="2">
          <spacer name="verticalSpacer">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -209,6 +209,13 @@
            </size>
           </property>
          </spacer>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="lbl_dbConnection">
+          <property name="text">
+           <string>Database connection is established.</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -240,6 +247,50 @@
         </item>
         <item row="0" column="0" colspan="3">
          <widget class="QTableView" name="tableView_members"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Settings</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="4" column="0" colspan="2">
+         <spacer name="verticalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="lne_dbName">
+          <property name="text">
+           <string>Freg_test</string>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_7">
+          <property name="text">
+           <string>Database Name</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0" colspan="2">
+         <widget class="QPushButton" name="btn_connectDb">
+          <property name="text">
+           <string>Connect Database</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
