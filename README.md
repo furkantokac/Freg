@@ -3,7 +3,7 @@
 Freg is a program under Faunus project that handle the small registration task. It uses MongoDB as database and PyQt5 as GUI.
 
 Screenshot
-![](www.test^^^^^^**.com/)
+![](https://github.com/furkantokac/Freg/blob/master/src/data/ss/FregV0.0-1.png)
 
 ### Requirements
 * Python3+ (Python2 is not tested.)
