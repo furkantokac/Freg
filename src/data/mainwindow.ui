@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Frec</string>
+   <string>Freg</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>icon/appicon.png</normaloff>icon/appicon.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">

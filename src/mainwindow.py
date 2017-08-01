@@ -12,6 +12,9 @@ class Ui_Frec(object):
     def setupUi(self, Frec):
         Frec.setObjectName("Frec")
         Frec.resize(515, 409)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("icon/appicon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        Frec.setWindowIcon(icon)
         self.centralWidget = QtWidgets.QWidget(Frec)
         self.centralWidget.setObjectName("centralWidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralWidget)
@@ -155,7 +158,7 @@ class Ui_Frec(object):
 
     def retranslateUi(self, Frec):
         _translate = QtCore.QCoreApplication.translate
-        Frec.setWindowTitle(_translate("Frec", "Frec"))
+        Frec.setWindowTitle(_translate("Frec", "Freg"))
         self.groupBox.setTitle(_translate("Frec", "Registration Form"))
         self.label.setText(_translate("Frec", "Name"))
         self.label_2.setText(_translate("Frec", "Surname"))
