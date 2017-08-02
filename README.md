@@ -33,4 +33,4 @@ CODEhttps://faunusteam.atlassian.net/secure/admin/EditPermissions!default.jspa?s
 
 ### Authors
 
-Check [contributors](https://github.com/furkantokac/Freg/graphs/contributors) page.
+Check [contributors](https://github.com/furkantokac/Freg/graphs/contributors) page...
