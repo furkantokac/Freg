@@ -49,7 +49,17 @@ class Frec(QMainWindow):
 
     # Save new member to database
     def save_new_member(self):
-        pass  # TODO
+
+        new={
+            "firstname":    self.ui.lne_firstName.text(),
+            "surname":      self.ui.lne_lastName.text(),
+            "department":   self.ui.comboBox_department.currentText(),
+            "email":        self.ui.lne_email.text(),
+            "mobilencc":    self.ui.lne_mobileCyp.text(),
+            "mobileother":  self.ui.lne_mobileOther.text(),
+        }
+
+        self.db.add_new_member(new['firstname'],new['surname'],new['department'],new['email'],new['mobilencc'],new['mobileother'])
 
     # Delete chosen member on tableView
     def delete_member(self):
