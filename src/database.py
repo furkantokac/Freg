@@ -40,6 +40,10 @@ class MongoDatabase:
         coll = self._get_collection(collection)
         coll.insert(field)
 
+    def delete_element(self, collection, query):
+        coll = self._get_collection(collection)
+        coll.delete_one(query)
+
     # RET : number of updated field
     def update_field(self, collection, find_query, update_query):
         coll = self._get_collection(collection)
@@ -78,19 +82,23 @@ class MongoDatabase:
         return datetime.strptime(str_dt, datetime_format)
 
     # -------------- BEG MEMBER
-    def add_new_member(self, firstname="", lastname="", email="", department="", mobilencc="", mobileother=""):
+    def add_new_member(self, firstname="", lastname="", email="", department="", mobilecyp="", mobileother=""):
         member = {
             "name": {"first": firstname, "last": lastname},
             "email": email,
             "department": department,
-            "mobileNo": {"ncc": mobilencc, "other": mobileother},
+            "mobileNo": {"cyp": mobilecyp, "other": mobileother},
             "registration_date": self.get_datetime()
         }
 
         self.insert_element(self.colls.member, member)
 
     def delete_member_by_email(self, email):
-        pass  # TODO
+        query = {"email": email}
+        self.delete_element(self.colls.member, query)
+
+    def total_num_of_members(self):
+        return int(self.count_query_result(self.colls.member, {}))
 
 
 def test():

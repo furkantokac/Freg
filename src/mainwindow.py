@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Frec(object):
     def setupUi(self, Frec):
         Frec.setObjectName("Frec")
-        Frec.resize(515, 447)
+        Frec.resize(508, 409)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("icon/appicon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Frec.setWindowIcon(icon)
@@ -147,7 +147,7 @@ class Ui_Frec(object):
         self.gridLayout.addWidget(self.tabWidget, 1, 0, 1, 1)
         Frec.setCentralWidget(self.centralWidget)
         self.menuBar = QtWidgets.QMenuBar(Frec)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 515, 30))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 508, 23))
         self.menuBar.setObjectName("menuBar")
         Frec.setMenuBar(self.menuBar)
         self.statusBar = QtWidgets.QStatusBar(Frec)
@@ -155,7 +155,7 @@ class Ui_Frec(object):
         Frec.setStatusBar(self.statusBar)
 
         self.retranslateUi(Frec)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Frec)
 
     def retranslateUi(self, Frec):
@@ -194,14 +194,4 @@ class Ui_Frec(object):
         self.label_7.setText(_translate("Frec", "Database Name"))
         self.btn_connectDb.setText(_translate("Frec", "Connect Database"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Frec", "Settings"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Frec = QtWidgets.QMainWindow()
-    ui = Ui_Frec()
-    ui.setupUi(Frec)
-    Frec.show()
-    sys.exit(app.exec_())
 
