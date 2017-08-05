@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>515</width>
-    <height>409</height>
+    <height>447</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,7 +22,7 @@
     <item row="1" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_newbie">
        <attribute name="title">
@@ -250,7 +250,7 @@
          </widget>
         </item>
         <item row="0" column="0" colspan="3">
-         <widget class="QTableView" name="tableView_members"/>
+         <widget class="QTableWidget" name="tableWidget"/>
         </item>
        </layout>
       </widget>
@@ -308,7 +308,7 @@
      <x>0</x>
      <y>0</y>
      <width>515</width>
-     <height>23</height>
+     <height>30</height>
     </rect>
    </property>
   </widget>

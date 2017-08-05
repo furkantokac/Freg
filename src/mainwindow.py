@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Frec(object):
     def setupUi(self, Frec):
         Frec.setObjectName("Frec")
-        Frec.resize(515, 409)
+        Frec.resize(515, 447)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("icon/appicon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Frec.setWindowIcon(icon)
@@ -119,9 +119,11 @@ class Ui_Frec(object):
         self.btn_import = QtWidgets.QPushButton(self.tab_members)
         self.btn_import.setObjectName("btn_import")
         self.gridLayout_3.addWidget(self.btn_import, 1, 1, 1, 1)
-        self.tableView_members = QtWidgets.QTableView(self.tab_members)
-        self.tableView_members.setObjectName("tableView_members")
-        self.gridLayout_3.addWidget(self.tableView_members, 0, 0, 1, 3)
+        self.tableWidget = QtWidgets.QTableWidget(self.tab_members)
+        self.tableWidget.setObjectName("tableWidget")
+        self.tableWidget.setColumnCount(0)
+        self.tableWidget.setRowCount(0)
+        self.gridLayout_3.addWidget(self.tableWidget, 0, 0, 1, 3)
         self.tabWidget.addTab(self.tab_members, "")
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
@@ -145,7 +147,7 @@ class Ui_Frec(object):
         self.gridLayout.addWidget(self.tabWidget, 1, 0, 1, 1)
         Frec.setCentralWidget(self.centralWidget)
         self.menuBar = QtWidgets.QMenuBar(Frec)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 515, 23))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 515, 30))
         self.menuBar.setObjectName("menuBar")
         Frec.setMenuBar(self.menuBar)
         self.statusBar = QtWidgets.QStatusBar(Frec)
@@ -153,7 +155,7 @@ class Ui_Frec(object):
         Frec.setStatusBar(self.statusBar)
 
         self.retranslateUi(Frec)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(Frec)
 
     def retranslateUi(self, Frec):
@@ -192,4 +194,14 @@ class Ui_Frec(object):
         self.label_7.setText(_translate("Frec", "Database Name"))
         self.btn_connectDb.setText(_translate("Frec", "Connect Database"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Frec", "Settings"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Frec = QtWidgets.QMainWindow()
+    ui = Ui_Frec()
+    ui.setupUi(Frec)
+    Frec.show()
+    sys.exit(app.exec_())
 
