@@ -49,6 +49,7 @@ class Frec(QMainWindow):
 
     # Save new member to database
     def save_new_member(self):
+    #def clear_form(self):
 
         new={
             "firstname":    self.ui.lne_firstName.text(),
@@ -85,6 +86,13 @@ class Frec(QMainWindow):
     def create_desktop_entry(self):
         # TODO: Replace [-HOMEDIR-] inside ./data/freg.desktop and copy it to ~/.local/share/applications/
         pass
+
+
+    def arrange_for_cvs(self):
+        dbb = self.db.query_result_multi("Member",{})
+
+        for member in dbb:
+            one=member["name"]["first"]+","+member["name"]["last"]+","+member["email"]
 
 
 if __name__ == "__main__":
