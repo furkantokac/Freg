@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import mainwindow, sys
+import mainwindow, sys, csv
 from database import MongoDatabase
 from PyQt5.QtWidgets import QMainWindow, QApplication
+
+
 
 __version__ = "0.0"
 
@@ -25,6 +27,7 @@ class Frec(QMainWindow):
         self.ui.btn_clear.clicked.connect(self.clear_form)
         self.ui.btn_export.clicked.connect(self.export_cvs)
         self.ui.btn_import.clicked.connect(self.import_cvs)
+        self.ui.btn_exportAsCVS.clicked.connect(self.export_cvs)
 
         self.ui.btn_connectDb.clicked.connect(self.connect_db)
 
@@ -76,7 +79,16 @@ class Frec(QMainWindow):
 
     # Export members in the database as csv
     def export_cvs(self):
-        pass  # TODO
+
+        try:
+            file = open("freg_export.cvs","w+")
+            csv_file = csv.writer(file)
+            data = [self.ui.lne_firstName.text(), self.ui.lne_lastName.text()]
+            csv_file.writerow(data)
+
+        finally:
+            file.close()
+
 
     # Import members from a csv file
     def import_cvs(self):

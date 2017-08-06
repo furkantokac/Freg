@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>515</width>
-    <height>409</height>
+    <width>313</width>
+    <height>347</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,10 +19,10 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0">
+    <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tab_newbie">
        <attribute name="title">
@@ -259,7 +259,7 @@
         <string>Settings</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_4">
-        <item row="4" column="0" colspan="2">
+        <item row="5" column="0" colspan="2">
          <spacer name="verticalSpacer_2">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -271,16 +271,6 @@
            </size>
           </property>
          </spacer>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="lne_dbName">
-          <property name="text">
-           <string>Freg_test</string>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
         </item>
         <item row="0" column="0">
          <widget class="QLabel" name="label_7">
@@ -296,6 +286,23 @@
           </property>
          </widget>
         </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="lne_dbName">
+          <property name="text">
+           <string>Freg_test</string>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0" colspan="2">
+         <widget class="QPushButton" name="btn_exportAsCVS">
+          <property name="text">
+           <string>Export As CVS</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
      </widget>
@@ -307,8 +314,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>515</width>
-     <height>23</height>
+     <width>313</width>
+     <height>17</height>
     </rect>
    </property>
   </widget>
