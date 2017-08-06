@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
+from PyQt5.QtCore import QModelIndex
 
 import mainwindow, sys, csv
 from database import MongoDatabase
-from PyQt5.QtWidgets import QMainWindow, QApplication
+from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem
 
 
 
@@ -15,7 +16,6 @@ class Frec(QMainWindow):
 
         self.ui = mainwindow.Ui_Frec()
         self.ui.setupUi(self)
-
         self.db = MongoDatabase()
 
         self.init_frec()
@@ -33,14 +33,16 @@ class Frec(QMainWindow):
 
         self.connect_db()
 
+        self.show_member_at_tableWidget()
+
     def show_message(self, msg, timeout=3000):
         self.ui.statusBar.showMessage(msg, timeout)
 
     def connect_db(self):
         dbName = self.ui.lne_dbName.text()
-        if self.db.connect( dbName ):
-            self.show_message("Database connection with '"+dbName+"' is successful.")
-            self.ui.lbl_dbConnection.setText("Database : Connected '"+dbName+"'")
+        if self.db.connect(dbName):
+            self.show_message("Database connection with '" + dbName + "' is successful.")
+            self.ui.lbl_dbConnection.setText("Database : Connected '" + dbName + "'")
             self.ui.lbl_dbConnection.setStyleSheet('color: green')
         else:
             self.ui.lbl_dbConnection.setText("Database : Disconnected")
@@ -52,21 +54,56 @@ class Frec(QMainWindow):
 
     # Save new member to database
     def save_new_member(self):
+        # def clear_form(self):
 
-        new={
-            "firstname":    self.ui.lne_firstName.text(),
-            "surname":      self.ui.lne_lastName.text(),
-            "department":   self.ui.comboBox_department.currentText(),
-            "email":        self.ui.lne_email.text(),
-            "mobilencc":    self.ui.lne_mobileCyp.text(),
-            "mobileother":  self.ui.lne_mobileOther.text(),
+        new = {
+            "firstname": self.ui.lne_firstName.text(),
+            "surname": self.ui.lne_lastName.text(),
+            "department": self.ui.comboBox_department.currentText(),
+            "email": self.ui.lne_email.text(),
+            "mobilecyp": self.ui.lne_mobileCyp.text(),
+            "mobileother": self.ui.lne_mobileOther.text(),
         }
 
-        self.db.add_new_member(new['firstname'],new['surname'],new['department'],new['email'],new['mobilencc'],new['mobileother'])
+        self.db.add_new_member(new['firstname'], new['surname'], new['email'], new['department'], new['mobilecyp'],
+                               new['mobileother'])
+        self.add_member_to_tableWidget(new['firstname'], new['surname'], new['email'], new['department'],
+                                       new['mobilecyp'], new['mobileother'])
+
+    # show member on tableview
+    def add_member_to_tableWidget(self, firstname, surname, email, department, mobilecyp, mobileother):
+        rowPoint = self.ui.tableWidget.rowCount()
+        self.table.insertRow(rowPoint)
+        self.table.setItem(rowPoint, 0, QTableWidgetItem(firstname))
+        self.table.setItem(rowPoint, 1, QTableWidgetItem(surname))
+        self.table.setItem(rowPoint, 2, QTableWidgetItem(email))
+        self.table.setItem(rowPoint, 3, QTableWidgetItem(department))
+        self.table.setItem(rowPoint, 4, QTableWidgetItem(mobilecyp))
+        self.table.setItem(rowPoint, 5, QTableWidgetItem(mobileother))
+
+    def show_member_at_tableWidget(self):
+        self.table = self.ui.tableWidget
+        self.table.setRowCount(0)
+        self.table.setColumnCount(6)
+        self.table.setHorizontalHeaderLabels(
+            ["Name", "Surname", "E-mail", "Department", "Mobile No Cyp", "Mobile No Other"])
+        query = {} # means no condition. so it will get everyone.
+        result = self.db.query_result_multi("Member", query)
+        for member in result:
+            self.add_member_to_tableWidget(member["name"]["first"], member["name"]["last"], member["email"],
+                                           member["department"], member["mobileNo"]["cyp"], member["mobileNo"]["other"])
 
     # Delete chosen member on tableView
     def delete_member(self):
-        pass  # TODO
+        indexes = self.ui.tableWidget.selectedIndexes()
+        for i in indexes:
+            # Following line get the selected row's email address
+            email_to_delete = str(self.ui.tableWidget.item(i.row(), 2).text())
+
+            # Delete member who has the email
+            self.db.delete_member_by_email(email_to_delete)
+
+        self.show_member_at_tableWidget()
 
     # Clear inside the line edits in registration form
     def clear_form(self):
@@ -97,6 +134,16 @@ class Frec(QMainWindow):
     def create_desktop_entry(self):
         # TODO: Replace [-HOMEDIR-] inside ./data/freg.desktop and copy it to ~/.local/share/applications/
         pass
+
+    def arrange_for_cvs(self):
+        dbb = self.db.query_result_multi("Member", {})
+        arranged_str = ""
+
+        for member in dbb:
+            one = member["name"]["first"] + "," + member["name"]["last"] + "," + member["email"]
+            arranged_str += one + "\n"
+
+        return arranged_str
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 ## Freg Alpha V0.0
 
-Freg is a program under Faunus project that handle the small registration task. It uses MongoDB as database and PyQt5 as GUI.
+Freg is a program under Faunus project that handles small registration tasks. It uses MongoDB as database and PyQt5 as GUI.
 
 Screenshot :
 
@@ -11,9 +11,10 @@ Screenshot :
 * MongoDB
 * pymongo
 * PyQt5
-* Linux or macOS (Windows untested yet)
+* Linux, MacOS, Windows
+
 <!--```
-CODEhttps://faunusteam.atlassian.net/secure/admin/EditPermissions!default.jspa?schemeId=10000
+CODE
 ```-->
 
 ### Deployment
@@ -21,14 +22,14 @@ CODEhttps://faunusteam.atlassian.net/secure/admin/EditPermissions!default.jspa?s
 1) Install [MongoDB Server](https://www.mongodb.com/download-center)
 2) Install [Python3+](https://www.python.org/downloads/)
 3) Install [pip3](https://stackoverflow.com/questions/6587507/how-to-install-pip-with-python-3)
-4) pip3 install -r [requirements.txt]()
-5) python3 [main.py](https://github.com/furkantokac/Freg/blob/master/src/main.py)
+4) pip3 install -r [requirements.txt](https://github.com/furkantokac/Freg/blob/master/requirements.txt)
+5) python3 [freg.py](https://github.com/furkantokac/Freg/blob/master/src/freg.py)
 
 ### Development Tools
 
-* [Qt Creator 4.3.1](https://www.qt.io/download-open-source) - For GUI Design
-* [PyCharm 2017.2](https://www.jetbrains.com/pycharm/) - Python IDE
-* [MongoDB Compass](https://www.mongodb.com/products/compass) - Management of MongoDB data
+* [Qt Creator](https://www.qt.io/download-open-source) - GUI Design Editor
+* [PyCharm](https://www.jetbrains.com/pycharm/) - Python IDE
+* [MongoDB Compass](https://www.mongodb.com/products/compass) - Management of MongoDB database
 * [Atlassian Jira](https://www.atlassian.com/software/jira) - Project management
 
 ### Authors

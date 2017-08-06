@@ -7,7 +7,7 @@
       "name": {"first":"firstname", "last":"lastname"},
       "email": "emailtest@gmail.com",
       "department": "department",
-      "mobileNo": {"ncc": "nccmobilephonenumber", "other": "othermobilephonenumber"},
+      "mobileNo": {"cyp": "cypmobilephonenumber", "other": "othermobilephonenumber"},
       "registration_date": "datetime"
     },
 
