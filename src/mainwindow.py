@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainwindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.9
+# Created by: PyQt5 UI code generator 5.8.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Frec(object):
     def setupUi(self, Frec):
         Frec.setObjectName("Frec")
-        Frec.resize(508, 409)
+        Frec.resize(558, 485)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("icon/appicon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Frec.setWindowIcon(icon)
@@ -132,7 +132,7 @@ class Ui_Frec(object):
         self.gridLayout_4.setSpacing(6)
         self.gridLayout_4.setObjectName("gridLayout_4")
         spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_4.addItem(spacerItem1, 5, 0, 1, 2)
+        self.gridLayout_4.addItem(spacerItem1, 6, 0, 1, 2)
         self.label_7 = QtWidgets.QLabel(self.tab)
         self.label_7.setObjectName("label_7")
         self.gridLayout_4.addWidget(self.label_7, 0, 0, 1, 1)
@@ -146,11 +146,14 @@ class Ui_Frec(object):
         self.btn_exportAsCVS = QtWidgets.QPushButton(self.tab)
         self.btn_exportAsCVS.setObjectName("btn_exportAsCVS")
         self.gridLayout_4.addWidget(self.btn_exportAsCVS, 3, 0, 1, 2)
+        self.btn_createDesktopEntry = QtWidgets.QPushButton(self.tab)
+        self.btn_createDesktopEntry.setObjectName("btn_createDesktopEntry")
+        self.gridLayout_4.addWidget(self.btn_createDesktopEntry, 4, 0, 1, 2)
         self.tabWidget.addTab(self.tab, "")
         self.gridLayout.addWidget(self.tabWidget, 0, 0, 1, 1)
         Frec.setCentralWidget(self.centralWidget)
         self.menuBar = QtWidgets.QMenuBar(Frec)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 508, 23))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 558, 28))
         self.menuBar.setObjectName("menuBar")
         Frec.setMenuBar(self.menuBar)
         self.statusBar = QtWidgets.QStatusBar(Frec)
@@ -197,5 +200,6 @@ class Ui_Frec(object):
         self.btn_connectDb.setText(_translate("Frec", "Connect Database"))
         self.lne_dbName.setText(_translate("Frec", "Freg_test"))
         self.btn_exportAsCVS.setText(_translate("Frec", "Export As CVS"))
+        self.btn_createDesktopEntry.setText(_translate("Frec", "Create Desktop Entry"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Frec", "Settings"))
 
