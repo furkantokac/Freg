@@ -81,7 +81,7 @@ class Frec(QMainWindow):
     def export_cvs(self):
 
         try:
-            file = open("freg_export.cvs","w+")
+            file = open("freg_export.cvs", "w+")
             csv_file = csv.writer(file)
             data = [self.ui.lne_firstName.text(), self.ui.lne_lastName.text()]
             csv_file.writerow(data)
