@@ -23,7 +23,7 @@ class Frec(QMainWindow):
     def init_frec(self):
         self.ui.btn_register.clicked.connect(self.save_new_member)
         self.ui.btn_delete.clicked.connect(self.delete_member)
-        self.ui.btn_createDesktopEntry.connect(self.create_desktop_entry)
+        self.ui.btn_createDesktopEntry.clicked.connect(self.create_desktop_entry)
         self.ui.btn_clear.clicked.connect(self.clear_form)
         self.ui.btn_export.clicked.connect(self.export_cvs)
         self.ui.btn_import.clicked.connect(self.import_cvs)
