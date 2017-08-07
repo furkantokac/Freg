@@ -23,7 +23,7 @@ class Frec(QMainWindow):
     def init_frec(self):
         self.ui.btn_register.clicked.connect(self.save_new_member)
         self.ui.btn_delete.clicked.connect(self.delete_member)
-
+        self.ui.btn_createDesktopEntry.connect(self.create_desktop_entry)
         self.ui.btn_clear.clicked.connect(self.clear_form)
         self.ui.btn_export.clicked.connect(self.export_cvs)
         self.ui.btn_import.clicked.connect(self.import_cvs)
@@ -132,8 +132,16 @@ class Frec(QMainWindow):
         pass  # TODO
 
     def create_desktop_entry(self):
-        # TODO: Replace [-HOMEDIR-] inside ./data/freg.desktop and copy it to ~/.local/share/applications/
-        pass
+        fd = open("~/local/share/applications/freg.desktop", "w")
+        fd.write("[Desktop Entry]\n")
+        fd.write("Version=1.0 \n")
+        fd.write("Type=Application\n")
+        fd.write("Name=Freg\n")
+        fd.write("Exec=python3 ~/.faunus/frec/frec.py\n")
+        fd.write("Icon=~/.faunus/frec/data/icon/appicon.png\n")
+        fd.write("Comment=Small member registration system\n")
+        fd.write("Terminal=false\n")
+        fo.close()
 
     def arrange_for_cvs(self):
         dbb = self.db.query_result_multi("Member", {})
