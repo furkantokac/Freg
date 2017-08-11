@@ -5,8 +5,6 @@ import mainwindow, sys, csv
 from database import MongoDatabase
 from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem
 
-
-
 __version__ = "0.0"
 
 
@@ -32,7 +30,6 @@ class Frec(QMainWindow):
         self.ui.btn_connectDb.clicked.connect(self.connect_db)
 
         self.connect_db()
-
         self.show_member_at_tableWidget()
 
     def show_message(self, msg, timeout=3000):
@@ -54,8 +51,6 @@ class Frec(QMainWindow):
 
     # Save new member to database
     def save_new_member(self):
-        # def clear_form(self):
-
         new = {
             "firstname": self.ui.lne_firstName.text(),
             "surname": self.ui.lne_lastName.text(),
@@ -65,8 +60,10 @@ class Frec(QMainWindow):
             "mobileother": self.ui.lne_mobileOther.text(),
         }
 
-        self.db.add_new_member(new['firstname'], new['surname'], new['email'], new['department'], new['mobilecyp'],
-                               new['mobileother'])
+        if self.db.add_new_member(new['firstname'], new['surname'], new['email'], new['department'], new['mobilecyp'],
+                               new['mobileother']) is False:
+            return False
+
         self.add_member_to_tableWidget(new['firstname'], new['surname'], new['email'], new['department'],
                                        new['mobilecyp'], new['mobileother'])
 
@@ -87,8 +84,10 @@ class Frec(QMainWindow):
         self.table.setColumnCount(6)
         self.table.setHorizontalHeaderLabels(
             ["Name", "Surname", "E-mail", "Department", "Mobile No Cyp", "Mobile No Other"])
-        query = {} # means no condition. so it will get everyone.
+        query = {}  # means no condition. so it will get everyone.
         result = self.db.query_result_multi("Member", query)
+        if not result:
+            return False
         for member in result:
             self.add_member_to_tableWidget(member["name"]["first"], member["name"]["last"], member["email"],
                                            member["department"], member["mobileNo"]["cyp"], member["mobileNo"]["other"])
@@ -125,7 +124,6 @@ class Frec(QMainWindow):
 
         finally:
             file.close()
-
 
     # Import members from a csv file
     def import_cvs(self):
