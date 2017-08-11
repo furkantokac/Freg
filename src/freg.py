@@ -139,7 +139,7 @@ class Frec(QMainWindow):
         fd.write("Icon=~/.faunus/frec/data/icon/appicon.png\n")
         fd.write("Comment=Small member registration system\n")
         fd.write("Terminal=false\n")
-        fo.close()
+        fd.close()
 
     def arrange_for_cvs(self):
         dbb = self.db.query_result_multi("Member", {})
