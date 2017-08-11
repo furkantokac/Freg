@@ -1,4 +1,4 @@
-## Freg Alpha V0.0
+## Freg Beta V1.0
 
 Freg is a program under Faunus project that handles small registration tasks. It uses MongoDB as database and PyQt5 as GUI.
 
