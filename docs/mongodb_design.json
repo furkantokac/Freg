@@ -2,7 +2,6 @@
 // MongoDatabase instance example
 {
   "Freg": {
-    // Member data
     "Member": {
       "_id": "AutomaticallyGiven",
       "name": {"first":"Lil", "last":"Wayne"},

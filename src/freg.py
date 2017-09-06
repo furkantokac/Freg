@@ -6,7 +6,7 @@ from database import MongoDatabase
 from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem
 from PyQt5.QtGui import QIcon
 
-__version__ = "0.0"
+__version__ = "1.5"
 
 
 class Frec(QMainWindow):
