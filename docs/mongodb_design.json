@@ -1,20 +1,15 @@
-// Frec V0.0
+// Frec V1.0
 // MongoDatabase instance example
 {
-  "Frec": {
+  "Freg": {
+    // Member data
     "Member": {
       "_id": "AutomaticallyGiven",
-      "name": {"first":"firstname", "last":"lastname"},
-      "email": "emailtest@gmail.com",
-      "department": "department",
-      "mobileNo": {"cyp": "cypmobilephonenumber", "other": "othermobilephonenumber"},
-      "registration_date": "datetime"
-    },
-
-    "Department": {
-      "_id": "AutomaticallyGiven",
-      "id": "0",
-      "name": "Computer Engineering"
+      "name": {"first":"Lil", "last":"Wayne"},
+      "email": {"metu":"lil.wayne@metu.edu.tr", "other":"lil_wayne9@gmail.com"},
+      "department": {"name":"Rap Engineering"},
+      "mobileNo": {"cyp": "905331231212", "other": "905441231212"},
+      "registration_date": "27.09.2017"
     }
   }
 }

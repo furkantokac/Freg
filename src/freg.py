@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from PyQt5.QtCore import QModelIndex
 
-import mainwindow, sys, csv
+import mainwindow, sys, config
 from database import MongoDatabase
 from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem
+from PyQt5.QtGui import QIcon
 
 __version__ = "0.0"
 
@@ -17,6 +18,11 @@ class Frec(QMainWindow):
         self.db = MongoDatabase()
 
         self.init_frec()
+        self.is_local_save = False
+
+        self.dirs = config.Dirs()
+
+        self.setWindowIcon(QIcon(self.dirs.appicon))
 
     def init_frec(self):
         self.ui.btn_register.clicked.connect(self.save_new_member)
@@ -26,11 +32,24 @@ class Frec(QMainWindow):
         self.ui.btn_export.clicked.connect(self.export_cvs)
         self.ui.btn_import.clicked.connect(self.import_cvs)
         self.ui.btn_exportAsCVS.clicked.connect(self.export_cvs)
+        self.ui.checkBox_saveLocal.stateChanged.connect(self.save_local)
 
         self.ui.btn_connectDb.clicked.connect(self.connect_db)
 
         self.connect_db()
         self.show_member_at_tableWidget()
+
+    def local_save_mode(self):
+        return True
+
+    def save_local(self, state):
+
+        if state:
+            self.is_local_save = True
+        else:
+            self.is_local_save = False
+
+        return state
 
     def show_message(self, msg, timeout=3000):
         self.ui.statusBar.showMessage(msg, timeout)
@@ -38,16 +57,22 @@ class Frec(QMainWindow):
     def connect_db(self):
         dbName = self.ui.lne_dbName.text()
         if self.db.connect(dbName):
-            self.show_message("Database connection with '" + dbName + "' is successful.")
-            self.ui.lbl_dbConnection.setText("Database : Connected '" + dbName + "'")
-            self.ui.lbl_dbConnection.setStyleSheet('color: green')
+            self.successful_db_connection(dbName)
         else:
-            self.ui.lbl_dbConnection.setText("Database : Disconnected")
-            self.ui.lbl_dbConnection.setStyleSheet('color: red')
-            self.show_message("Database connection couldn't established!")
+            self.unsuccessful_db_connection()
             return False
 
         return True
+
+    def successful_db_connection(self, dbName):
+        self.show_message("Database connection with '" + dbName + "' is successful.")
+        self.ui.lbl_dbConnection.setText("Database : Connected '" + dbName + "'")
+        self.ui.lbl_dbConnection.setStyleSheet('color: green')
+
+    def unsuccessful_db_connection(self):
+        self.ui.lbl_dbConnection.setText("Database : Disconnected")
+        self.ui.lbl_dbConnection.setStyleSheet('color: red')
+        self.show_message("Database connection couldn't established!")
 
     # Save new member to database
     def save_new_member(self):
@@ -61,36 +86,40 @@ class Frec(QMainWindow):
         }
 
         if self.db.add_new_member(new['firstname'], new['surname'], new['email'], new['department'], new['mobilecyp'],
-                               new['mobileother']) is False:
+                                  new['mobileother']) is False:
             return False
 
         self.add_member_to_tableWidget(new['firstname'], new['surname'], new['email'], new['department'],
                                        new['mobilecyp'], new['mobileother'])
 
+        self.show_message("New member is added to database.")
+
     # show member on tableview
     def add_member_to_tableWidget(self, firstname, surname, email, department, mobilecyp, mobileother):
         rowPoint = self.ui.tableWidget.rowCount()
-        self.table.insertRow(rowPoint)
-        self.table.setItem(rowPoint, 0, QTableWidgetItem(firstname))
-        self.table.setItem(rowPoint, 1, QTableWidgetItem(surname))
-        self.table.setItem(rowPoint, 2, QTableWidgetItem(email))
-        self.table.setItem(rowPoint, 3, QTableWidgetItem(department))
-        self.table.setItem(rowPoint, 4, QTableWidgetItem(mobilecyp))
-        self.table.setItem(rowPoint, 5, QTableWidgetItem(mobileother))
+        table = self.ui.tableWidget
+        table.insertRow(rowPoint)
+        table.setItem(rowPoint, 0, QTableWidgetItem(firstname))
+        table.setItem(rowPoint, 1, QTableWidgetItem(surname))
+        table.setItem(rowPoint, 2, QTableWidgetItem(email))
+        table.setItem(rowPoint, 3, QTableWidgetItem(department))
+        table.setItem(rowPoint, 4, QTableWidgetItem(mobilecyp))
+        table.setItem(rowPoint, 5, QTableWidgetItem(mobileother))
 
     def show_member_at_tableWidget(self):
-        self.table = self.ui.tableWidget
-        self.table.setRowCount(0)
-        self.table.setColumnCount(6)
-        self.table.setHorizontalHeaderLabels(
-            ["Name", "Surname", "E-mail", "Department", "Mobile No Cyp", "Mobile No Other"])
+        table = self.ui.tableWidget
+        table.setRowCount(0)
+        # table.setColumnCount(6)
+        # table.setHorizontalHeaderLabels(
+        #    ["Name", "Surname", "E-mail", "Department", "Mobile No Cyp", "Mobile No Other"])
         query = {}  # means no condition. so it will get everyone.
         result = self.db.query_result_multi("Member", query)
         if not result:
             return False
         for member in result:
-            self.add_member_to_tableWidget(member["name"]["first"], member["name"]["last"], member["email"],
-                                           member["department"], member["mobileNo"]["cyp"], member["mobileNo"]["other"])
+            self.add_member_to_tableWidget(member["name"]["first"], member["name"]["last"], member["email"]["other"],
+                                           member["department"]["name"], member["mobileNo"]["cyp"],
+                                           member["mobileNo"]["other"])
 
     # Delete chosen member on tableView
     def delete_member(self):
@@ -115,31 +144,28 @@ class Frec(QMainWindow):
 
     # Export members in the database as csv
     def export_cvs(self):
-
-        try:
-            file = open("freg_export.cvs", "w+")
+        import csv
+        with open("freg_export.cvs", "w") as file:
             csv_file = csv.writer(file)
             data = [self.ui.lne_firstName.text(), self.ui.lne_lastName.text()]
             csv_file.writerow(data)
-
-        finally:
-            file.close()
 
     # Import members from a csv file
     def import_cvs(self):
         pass  # TODO
 
     def create_desktop_entry(self):
-        fd = open("~/local/share/applications/freg.desktop", "w")
-        fd.write("[Desktop Entry]\n")
-        fd.write("Version=1.0 \n")
-        fd.write("Type=Application\n")
-        fd.write("Name=Freg\n")
-        fd.write("Exec=python3 ~/.faunus/frec/frec.py\n")
-        fd.write("Icon=~/.faunus/frec/data/icon/appicon.png\n")
-        fd.write("Comment=Small member registration system\n")
-        fd.write("Terminal=false\n")
-        fd.close()
+        if config.PLATFORM == "LINUX":
+            with open(self.dirs.home + "/.local/share/applications/freg.desktop", "w") as fd:
+                fd.write("[Desktop Entry]\n")
+                fd.write("Version=1.0 \n")
+                fd.write("Type=Application\n")
+                fd.write("Name=Freg\n")
+                fd.write("Exec=python3 " + self.dirs.app + "\n")
+                fd.write("Icon=" + self.dirs.appicon + "\n")
+                fd.write("Comment=Small member registration system\n")
+                fd.write("Terminal=false\n")
+            return
 
     def arrange_for_cvs(self):
         dbb = self.db.query_result_multi("Member", {})
