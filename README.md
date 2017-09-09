@@ -4,11 +4,11 @@ Freg is a program under Faunus project that handles small registration tasks. It
 
 Screenshots :
 
-![Save new member](https://github.com/furkantokac/Freg/blob/master/src/data/ss/FregV1.5_1.png)
+![Save new member](https://github.com/furkantokac/Freg/blob/master/docs/ss/FregV1.5_1.png)
 
-![List members](https://github.com/furkantokac/Freg/blob/master/src/data/ss/FregV1.5_2.png)
+![List members](https://github.com/furkantokac/Freg/blob/master/docs/ss/FregV1.5_2.png)
 
-![Settings](https://github.com/furkantokac/Freg/blob/master/src/data/ss/FregV1.5_3.png)
+![Settings](https://github.com/furkantokac/Freg/blob/master/docs/ss/FregV1.5_3.png)
 
 ### Requirements
 * Python3+ (Python2 is not tested.)
