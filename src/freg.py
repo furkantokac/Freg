@@ -25,6 +25,13 @@ class Frec(QMainWindow):
         self.setWindowIcon(QIcon(self.dirs.appicon))
 
     def init_frec(self):
+        self.setTabOrder(self.ui.lne_firstName, self.ui.lne_lastName)
+        self.setTabOrder(self.ui.lne_lastName, self.ui.comboBox_department)
+        self.setTabOrder(self.ui.comboBox_department, self.ui.lne_email)
+        self.setTabOrder(self.ui.lne_email, self.ui.lne_mobileCyp)
+        self.setTabOrder(self.ui.lne_mobileCyp, self.ui.lne_mobileOther)
+        self.setTabOrder(self.ui.lne_mobileOther, self.ui.btn_register)
+
         self.ui.btn_register.clicked.connect(self.save_new_member)
         self.ui.btn_delete.clicked.connect(self.delete_member)
         self.ui.btn_createDesktopEntry.clicked.connect(self.create_desktop_entry)
