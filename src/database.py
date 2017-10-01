@@ -53,7 +53,7 @@ class MongoDatabase:
             self.client = MongoClient(serverSelectionTimeoutMS=500)
             self.client.server_info()
         except Exception as e:
-            logger.error("<-- is_mongodb_available error check :\n" + e)
+            logger.error("<-- is_mongodb_available error check :\n" + str(e))
             self.is_connected = False
             return False
 

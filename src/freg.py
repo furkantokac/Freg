@@ -100,6 +100,7 @@ class Frec(QMainWindow):
                                        new['mobilecyp'], new['mobileother'])
 
         self.show_message("New member is added to database.")
+        self.clear_form()
 
     # show member on tableview
     def add_member_to_tableWidget(self, firstname, surname, email, department, mobilecyp, mobileother):
